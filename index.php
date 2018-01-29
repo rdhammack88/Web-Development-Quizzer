@@ -1,6 +1,7 @@
 <?php //require_once("includes/connection.php"); ?>
 <?php //require_once("includes/queries.php"); ?>
 <?php require_once("includes/header.php"); ?>
+<?php //session_start(); session_unset(); session_destroy(); ?>
 
 <main class="wrapper" id="homePage">
 	<div class="container">
@@ -10,7 +11,7 @@
 		
 			<br/>
 			<p><a href="choice.php" role="button">Get Started</a></p>
-			<p><a href="admin.php" role="button">Admin</a></p>
+			<p><a href="admin/index.php" role="button">Admin</a></p>
 			
 			
 			<!--<p><a href="add.php" role="button">Add Question</a></p>

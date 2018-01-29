@@ -1,5 +1,5 @@
 <?php
-//include("includes/connection.php");
+$doc_root = substr($_SERVER['SCRIPT_NAME'], 0, (strpos($_SERVER['SCRIPT_NAME'], 'Quizzer'))+8);
 ?>
 
 <!DOCTYPE html>
@@ -13,14 +13,14 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Quizzer</title>
-	<link rel="stylesheet" href="../styles/main.css">
+	<link rel="stylesheet" href="<?php echo $doc_root; ?>styles/main.css">
 	
 	<link rel="icon" type="image/png" href="">
 </head>
 
 <body>
 	<header>
-		<a href="index.php"><h1><?= isset($_SESSION["category"]) ? strtoupper($_SESSION["category"]) : "Quiz" ?> Tester</h1></a>
+		<a href="<?php echo $doc_root; ?>index.php"><h1><?php echo isset($_SESSION["category"]) ? strtoupper($_SESSION["category"]) : "Quiz" ?> Tester</h1></a>
 		<!--<nav>
 			<ul>
 				<li><a href="index.php">Home</a></li>

@@ -17,7 +17,11 @@ if(isset($_GET['category'])) {
  * Get total questions
 */
 $query 	= "SELECT * FROM `questions`";
-$results = mysqli_query($conn, $query) or die();
+$results = mysqli_query($conn, $query);// or die();
+
+//$query = "SELECT COUNT(*)
+//		  FROM `questions`";
+//$question_count = mysqli_query($conn, $query);
 
 /*
  * Choice Page On Load
@@ -39,4 +43,19 @@ WHERE questions.question_category = '" . $_SESSION['category'] . "' AND question
 ORDER BY field(questions.question_number, " . implode(", ", $_SESSION["used_questions"]) ."), field(id, " . implode(", ", $_SESSION["answer_order"]) .")";
 $finale_queries = mysqli_query($conn, $query);
 }
+
+
+//if(isset($_SESSION['start']) && isset($_SESSION['end'])) {
+//	$start 	= $_SESSION['start'];
+//	$end 	= $_SESSION['end'];
+//} else {
+//	$start 	= 0;
+//	$end	= 10;
+//}
+//$query 		= "SELECT * 
+//			   FROM `questions`
+//			   WHERE question_number <= $end 
+//			   AND question_number > $start";
+////			   LIMIT 10";
+//$questions 	= mysqli_query($conn, $query);
 ?>

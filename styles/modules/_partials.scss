@@ -8,6 +8,12 @@
 	text-decoration: none;
 }
 
+%adminPageButtons {
+	width: 100px;
+	padding: 5px;
+	font-size: 1.4em;
+}
+
 %hoverEffect {
 	@include break(768px) {
 		-webkit-transition: all .2s ease-in-out;
