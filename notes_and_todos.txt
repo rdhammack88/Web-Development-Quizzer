@@ -1,0 +1,37 @@
+Quizzer todos
+
+durtyBomber416
+$2y$10$Ppl.hYoiT91wpU2dxxIq1.MFcgPsApO4rFV4zqO5ypadWzd.RiP6S
+	- $2y$10$Ppl.hYoiT91wpU2dxxIq1.MFcgPsApO4rFV4zqO5ypadWzd.RiP6S
+
+brutus
+$2y$10$qFO0nFSABYeKukkvczH8YuFej50f8aZ0GC27h3rvmX8N55Jq1dV.2
+	- $2y$10$qFO0nFSABYeKukkvczH8YuFej50f8aZ0GC27h3rvmX8N55Jq1dV.2
+
+/** Needs Fixed
+ *	display the correct answer for each question
+		- along with resources
+ *	create admin login page
+		- admin directive to either edit or add
+ *	display each question with a pause to distinguish between questions
+ *	add a timer to each question
+ *
+ 
+ 
+ 
+ 
+/** Maybe Done
+ *  make sure the question is not repeated
+ *	make sure when no answer has been selected, to not go to the next page
+	
+	
+	
+	
+	
+	$user_email = validateFormData($user_email);
+$user_password = password_hash( $_POST['password'], PASSWORD_DEFAULT );
+			$query = "UPDATE admin_users SET password = '$user_password' WHERE email = '$user_email'";
+	$result = mysqli_query( $conn, $query );
+	echo $query;
+
+				$passed = "Password Updated!";
