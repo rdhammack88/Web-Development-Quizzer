@@ -1,8 +1,0 @@
-quizzer
-
-	make sure when no answer has been selected, to not go to the next page
-
-// Maybe Done
-	make sure the question is not repeated
-
-	
