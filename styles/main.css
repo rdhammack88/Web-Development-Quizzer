@@ -465,6 +465,11 @@ main.wrapper > .container > p:nth-of-type(2) > a, main.wrapper > .container > p:
   font-size: 1em;
   text-decoration: none; }
 
+main#adminPage button[name=previous], main#adminPage button[name='next'] {
+  width: 100px;
+  padding: 5px;
+  font-size: 1.4em; }
+
 @media (min-width: 768px) {
   main.wrapper > .container > p:nth-of-type(2) > a, main.wrapper > .container > p:nth-of-type(3) > a, main.wrapper > .container form p > button, main#finalePage > .container > a.retake {
     -webkit-transition: all .2s ease-in-out;
@@ -772,10 +777,27 @@ main#adminPage div.question_box {
   border: 1px dotted #000;
   border-radius: 5px;
   margin: 4% auto;
-  padding: 7px 3%; }
+  padding: 7px 3%;
+  position: relative; }
   main#adminPage div.question_box > p.question_number {
     width: 75%;
     display: inline-block; }
+  main#adminPage div.question_box > p.edit-question {
+    width: 20%;
+    display: inline-block;
+    text-align: right;
+    margin: 0 10px;
+    position: absolute;
+    top: 0;
+    right: 0; }
+main#adminPage form {
+  width: 80%;
+  text-align: center;
+  margin: 0 auto 50px; }
+main#adminPage button[name=previous] {
+  margin-right: 30px; }
+main#adminPage button[name='next'] {
+  margin-left: 30px; }
 
 /* 
  * Add Question Page
