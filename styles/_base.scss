@@ -1,0 +1,97 @@
+/*
+ * Global Styles
+*/
+html {
+	font-size: 68.5%;
+	max-width: 100%;
+	overflow-x: hidden;
+}
+
+body {
+	width: 100vw;
+	max-width: 95%;
+	margin: 0;
+	padding: 0;
+	font-size: 1.8rem;
+	font-family: $font-main;
+	color: $darkblue;
+	background-color: #fff;
+	overflow-x: hidden;
+	overflow-y: hidden;
+}
+
+header {
+	width: 100vw;
+	max-width: 1000px;
+	margin: 5% auto;
+	
+	@include break(1200px) {
+		widows: 70%;
+		margin: 2% auto;
+	}
+	
+	a {
+		text-decoration: none;
+		color: $darkblue;
+	}
+}
+
+
+
+/* 
+ * Navigation Styles 		------ 		Not USING
+*/
+nav {
+	width: 100%;
+	background-color: #000;
+	color: azure;
+	
+	> ul li {
+		display: inline-block;
+		font-size: 1.7em;
+		
+		> a {
+			color: azure;
+		}
+	}
+}
+
+
+//.wrapper > .container {
+//	width: 90%;
+//	max-width: 900px;
+//	height: 500px;
+//	margin: 60px auto;
+//	
+//	@include break(768px) {
+//		width: 80%;
+//	}
+//}
+
+ul {
+	list-style: none;
+}
+
+h1 {
+	padding-left: 45px;
+}
+
+footer {
+	width: 100%;
+	text-align: center;
+	clear: both;
+//	margin-top: 6%;
+	@include clearfix;
+	
+	@include break(768px) {
+//		position: absolute;
+//		bottom: 0;
+//		left: 0;
+//		overflow: hidden;
+	}
+	
+	a {
+		text-decoration: none;
+		color: #000;
+	}
+}

@@ -1,0 +1,76 @@
+
+html {
+	font-size: 62.5%;
+	max-width: 100%;
+	overflow-x: hidden;
+}
+
+body {
+	width: 100vw;
+	max-width: 100%;
+	margin: 0;
+	padding: 0;
+	font-size: 1.8rem;
+	font-family: $font-main;
+	color: $darkblue;
+	background-color: #fff;
+	overflow-x: hidden;
+}
+
+.container {
+	width: 80%;
+	margin: 60px auto;
+}
+
+h1 {
+	font-family: $font-header;
+	text-align: center;
+	margin: 8% 0 15%;
+	padding-bottom: 20px;
+	transform: rotate(-6deg);
+	
+	@include break(768px) {
+		margin: 5% 0 8%;
+	}
+	
+	@include break(1200px) {
+		margin: 3.7% 0 5%;
+	}
+}
+
+hr {
+	width: 80%;
+	margin-bottom: 0;
+}
+
+div.buttons {
+	text-align: center;
+	width: 100%;
+	margin: 0 auto;
+}
+
+input[type="button"] {
+	padding: 5px;
+	margin-top: -1px;
+	font-size: .7em;
+	border-radius: 0 0 10px 10px;
+	
+	@include break(768px) {
+		font-size: 1em;
+	}
+}
+
+footer {
+	padding: 30px 0;
+	box-sizing: content-box;
+
+	> p {
+		font-size: .6em;
+		width: 50%;
+		text-align: center;
+		padding: 30px 0;
+		margin: auto;
+		vertical-align: baseline;
+		box-sizing: content-box;
+	}
+}

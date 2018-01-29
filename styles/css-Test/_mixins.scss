@@ -1,0 +1,38 @@
+@mixin imagegrid($qty, $margin) {
+	width: ((100% - (($qty - 1) * $margin)) / $qty);
+	
+	&:nth-child(n) {
+		margin-right: $margin;
+		margin-bottom: $margin * 3;
+	}
+	
+	&:nth-child(#{$qty}n) {
+		margin-right: 0;
+		margin-bottom: $margin * 3;
+	}
+}
+
+@mixin clearfix {
+	&:before,
+	&:after {
+		content: '';
+		display: table;
+	}
+	&:after {
+		clear: both;
+	}
+}
+
+@mixin break($args...) {
+	@if length($args) == 1 {
+		@media (min-width: nth($args, 1)) {
+			@content;
+		}
+	}
+	
+	@if length($args) == 2 {
+		@media (min-width: nth($args, 1)) and (max-width: nth($args, 2)) {
+			@content;
+		}
+	}
+}
