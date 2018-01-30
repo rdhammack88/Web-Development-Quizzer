@@ -1,39 +1,46 @@
-<?php include 'includes/connection.php'; ?>
-<?php include 'includes/functions.php'; ?>
+<?php include '../includes/connection.php'; ?>
+<?php include '../includes/functions.php'; ?>
 
 <?php
 session_start();
 //echo $_GET['question_number'];
-if(isset($_GET['question_number'])) {
-	$_SESSION['question_number'] = $_GET['question_number'];
-//	$_SESSION['category'] = $_GET['category'];
-}
+if(!isset($_SESSION['active_admin'])) {
+	header("Location: ../admin/index.php");
+} else {
+	if(!isset($_GET['question_number'])) {
+		header("Location: ../admin/index.php");
+	}
+//	echo __LINE__;
+//	$_SESSION['question_number'] = $_GET['question_number'];
+	$answers = [];
+	$question_number = $_GET['question_number'];
+	$query = "SELECT questions.question_number, questions.question, questions.question_category, choices.id, choices.is_correct, choices.answers, choices.correct_explanation, choices.resources
+	FROM questions 
+	LEFT JOIN choices ON questions.question_number = choices.question_number 
+	WHERE questions.question_number = '$question_number'";
+	$edit_question = mysqli_query($conn, $query);
+	//$row_count = mysqli_num_rows($edit_question);
+	//echo $row_count;
+//	echo __LINE__;
 
-$answers = [];
-$query = "SELECT questions.question_number, questions.question, questions.question_category, choices.id, choices.is_correct, choices.answers, choices.correct_reason, choices.resources
-FROM questions 
-LEFT JOIN choices ON questions.question_number = choices.question_number 
-WHERE questions.question_number =" . $_SESSION['question_number'];
-$edit_question = mysqli_query($conn, $query);
-//$row_count = mysqli_num_rows($edit_question);
-//echo $row_count;
+	while($row = mysqli_fetch_assoc($edit_question)) {
+//		echo __LINE__;
+		$question = $row['question'];
+		$question_number = $row['question_number'];
+		$category = $row['question_category'];
+	//	array_push($answers, $row['answers']);
+		$answers[$row['id']] = $row['answers'];
 
-while($row = mysqli_fetch_assoc($edit_question)) {
-	$question = $row['question'];
-	$question_number = $row['question_number'];
-	$category = $row['question_category'];
-//	array_push($answers, $row['answers']);
-	$answers[$row['id']] = $row['answers'];
-	
-	if($row['is_correct']) {
-		//$correct_answer = $row['id'];
-		$correct = $row['answers'];
-		$correct_reason = $row['correct_reason'];
-		$resources = $row['resources'];
+		if($row['is_correct']) {
+			//$correct_answer = $row['id'];
+			$correct = $row['answers'];
+			$correct_reason = $row['correct_explanation'];
+			$resources = $row['resources'];
+		}
 	}
 }
-print_r($answers);
 
+//print_r($answers);
 
 /*
  * Get total questions
@@ -112,7 +119,7 @@ if(isset($_POST['submit'])) {
 				
 				
 				// Run query
-				$insert_row = mysqli_query($conn, $query) or die($mysqli->errno.__LINE__);
+//				$insert_row = mysqli_query($conn, $query) or die($mysqli->errno.__LINE__);
 				
 				// Validate insert
 				if($insert_row) {
@@ -125,7 +132,8 @@ if(isset($_POST['submit'])) {
 		
 		$msg = 'Question has been added';
 		$next++;
-		
+
+//		header("Location: ../admin/index.php");
 //		header('Location: add.php');
 //		exit();
 	} else {
@@ -140,72 +148,69 @@ if(isset($_POST["cancel"])) {
 	$_SESSION['start'] 	= $start;
 	$_SESSION['end']	= $end;
 	//$_SESSION['total_count'] = mysqli_num_rows($results);
-	header("Location: admin.php");
+	header("Location: ../admin/index.php");
 	exit();
 }
 
 
-
+include("../includes/header.php"); 
 ?>
 
-<?php include("includes/header.php"); ?>
+<main class="addPage">
+	<div class="container">
+		<h2>Add a Question</h2>
+		<?php
+			if(isset($msg)) {
+				echo "<p class=\"message\">{$msg}</p>";
+			}
+		?>
+		<form action="<?= $_SERVER['PHP_SELF']; ?>" method="POST">
+			<p class="hidden"> <!-- hidden -->
+				<label for="question_number">Question Number: </label>
+				<input type="number" name="question_number" value="<?= $question_number; ?>" disabled=true>
+			</p>
+			<p>
+				<label for="question_text">Question Text: </label>
+				<input type="text" name="question_text" id="question_text" value="<?php echo $question; ?>">
+			</p>
+			<p>
+				<label for="question_category">Question Category: </label>
+				<input type="text" name="question_category" id="question_category" value="<?php echo $category; ?>">
+			</p>
+
+			<?php $i = 1; foreach($answers as $key => $answer) : ?>
+			<p><?php //echo $key ?></p>
+			<p>
+				<label for="choice<?= $i ?>">Choice #<?= $i; ?>: </label>
+				<input type="text" name="choice<?= $i; ?>" id="choice<?php $i; ?>" value="<?= $answer; ?>">
+				<input type="hidden" name="" value="<?= $key ?>">
+			</p>
+			<?php if($answer == $correct) : ?>
+			<?php $correct_answer = $i; ?>
+			<?php endif; $i++; ?>
+			<?php endforeach; ?>
 
 
-	<main class="addPage">
-		<div class="container">
-			<h2>Add a Question</h2>
-			<?php
-				if(isset($msg)) {
-					echo "<p class=\"message\">{$msg}</p>";
-				}
-			?>
-			<form action="<?= $_SERVER['PHP_SELF']; ?>" method="POST">
-				<p class="hidden">
-					<label for="question_number">Question Number: </label>
-					<input type="hidden" name="question_number" value="<?= $question_number; ?>" placeholder="<?php echo $question_number;?>" disabled=true>
-				</p>
-				<p>
-					<label for="question_text">Question Text: </label>
-					<input type="text" name="question_text" id="question_text" placeholder="<?php echo $question; ?>">
-				</p>
-				<p>
-					<label for="question_category">Question Category: </label>
-					<input type="text" name="question_category" id="question_category" placeholder="<?php echo $category; ?>">
-				</p>
-				
-				<?php $i = 1; foreach($answers as $key => $answer) : ?>
-				<p><?php //echo $key ?></p>
-				<p>
-					<label for="choice<?= $i ?>">Choice #<?= $i; ?>: </label>
-					<input type="text" name="choice<?= $i; ?>" id="choice<?php $i; ?>" placeholder="<?= $answer; ?>">
-					<input type="hidden" name="" value="<?= $key ?>">
-				</p>
-				<?php if($answer == $correct) : ?>
-				<?php $correct_answer = $i; ?>
-				<?php endif; $i++; ?>
-				<?php endforeach; ?>
-				
-				
-				<?php  ?>
-				<?php  ?>
-				<p>
-					<label for="correct_choice">Correct Choice Number: </label>
-					<input type="number" name="correct_choice" id="correct_choice" min="0" max="5" placeholder="<?php echo $correct_answer; ?>">
-				</p>
-				<p>
-					<label for="correct_reason">Correct Reason: </label>
-					<input type="text" name="correct_reason" id="correct_reason" placeholder="<?php echo $correct_reason; ?>">
-				</p>
-				<p>
-					<label for="resources">Resources: </label>
-					<input type="text" name="resources" id="resources" placeholder="<?php echo $resources; ?>">
-				</p>
-				<input type="submit" name="cancel" value="Cancel">
-				<input type="submit" name="submit" value="submit">
-			</form>
-			
-		</div>
-	</main>
+			<?php  ?>
+			<?php  ?>
+			<p>
+				<label for="correct_choice">Correct Choice Number: </label>
+				<input type="number" name="correct_choice" id="correct_choice" min="0" max="5" value="<?php echo $correct_answer; ?>">
+			</p>
+			<p>
+				<label for="correct_reason">Correct Reason: </label>
+				<input type="text" name="correct_reason" id="correct_reason" value="<?php echo $correct_reason; ?>">
+			</p>
+			<p>
+				<label for="resources">Resources: </label>
+				<input type="text" name="resources" id="resources" value="<?php echo $resources; ?>">
+			</p>
+			<input type="submit" name="cancel" value="Cancel">
+			<input type="submit" name="submit" value="submit">
+		</form>
+
+	</div>
+</main>
 
 
-<?php include("includes/footer.php"); ?>
+<?php include("../includes/footer.php"); ?>

@@ -673,7 +673,7 @@ main.addPage {
 	margin: 0 auto;
 
 	@include break(768px) {
-		height: 80vh;
+		height: 75vh;
 	}
 	
 	h2 {
@@ -722,7 +722,11 @@ main.addPage {
 		input[type="text"],
 		input[type="number"] {
 			float: none;
-				border-radius: 1px;
+			border: outset 1px #000;
+			border-radius: 5px;
+			padding: 3px;
+			text-align: right;
+			
 
 			@include clearfix;
 

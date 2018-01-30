@@ -910,7 +910,7 @@ main.addPage {
   margin: 0 auto; }
   @media (min-width: 768px) {
     main.addPage {
-      height: 80vh; } }
+      height: 75vh; } }
   main.addPage h2 {
     color: #014348;
     margin-bottom: 0; }
@@ -940,7 +940,10 @@ main.addPage {
     main.addPage form input[type="text"],
     main.addPage form input[type="number"] {
       float: none;
-      border-radius: 1px; }
+      border: outset 1px #000;
+      border-radius: 5px;
+      padding: 3px;
+      text-align: right; }
       main.addPage form input[type="text"]:before, main.addPage form input[type="text"]:after,
       main.addPage form input[type="number"]:before,
       main.addPage form input[type="number"]:after {
