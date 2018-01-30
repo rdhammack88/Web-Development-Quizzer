@@ -67,8 +67,8 @@ require_once("../includes/header.php");
 <main id="adminPage">
 
 <?php if(mysqli_num_rows($questions) >= 1) : ?>
-<?php while($row = mysqli_fetch_assoc($questions)) : ?>
 	<p><a href="add.php" role="button" class="btn">Add Question</a></p>
+<?php while($row = mysqli_fetch_assoc($questions)) : ?>
 	<div class="question_box">
 		<p class="question_number">Question Number: <?php echo $row['question_number']; ?></p>
 		<p class="edit-question">

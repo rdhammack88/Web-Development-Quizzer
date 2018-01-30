@@ -52,20 +52,25 @@ if(isset($_POST['login'])) {
 
 include('../includes/header.php');
 ?>
-
+<main id="adminLogin">
 
 <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
 	<fieldset>
 		<legend>Log In</legend>
+		<div class="input-group">
 		<label for="email">Email:</label>
 		<input type="text" name="email" placeholder="email">
+		</div>
+		
+		<div class="input-group">
 		<label for="password">Password:</label>
 		<input type="password" name="password" placeholder="password">
+		</div>
 		<button type="submit" name="login" class="btn">Submit</button>
 	</fieldset>
 </form>
 
 <p>Don't have an account? <span><a href="../admin/admin_signup.php">Create one!</a></span></p>
 
-
+</main>
 <?php include('../includes/footer.php'); ?>

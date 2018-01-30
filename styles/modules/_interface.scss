@@ -440,10 +440,66 @@ main#finalePage {
 }
 
 /* 
+ * Admin Login Page
+*/
+main#adminLogin {
+	height: 70vh;
+	width: 80%;
+	margin: 0 auto;
+	
+	> form {
+		width: 50%;
+		height: 300px;
+		margin: 120px auto 30px;
+		
+		.input-group {
+			text-align: center;
+//			width: 80%;
+			height: 2em;
+			margin: 2% auto;
+			clear: both;
+		}
+		
+		label {
+			font-size: .9em;
+			float: left;
+			padding-top: .3em;
+//			clear: both;
+		}
+		
+		input {
+			line-height: 1.5em;
+			float: right;
+			border: outset 1px #000;
+			border-radius: 5px;
+			padding: 3px;
+		}
+		
+		button {
+			margin-top: 5%;
+			background-color: lighten($blue, 8%);
+//			clear: both;
+		}
+	}
+	
+	> p {
+		text-align: center;
+		clear: both;
+	}
+}
+
+/* 
  * Admin Page
 */
 main#adminPage {
-	height: 70vh;
+//	height: 70vh;
+	
+	> p:first-of-type {
+		width: 75%; 
+		text-align: right;
+		margin: 50px auto 10px;
+//		padding: 7px 3%;
+	}
 	
 	div.question_box {
 		width: 70%;
@@ -487,6 +543,7 @@ main#adminPage {
 	
 	.no-user-questions {
 		width: 70%;
+		height: 70vh;
 		margin: 120px auto 0;
 	}
 	

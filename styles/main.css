@@ -486,6 +486,8 @@ main#adminPage button[name=previous], main#adminPage button[name='next'] {
   display: inline-block;
   border: 1px solid #000;
   border-radius: 5px;
+  color: #032;
+  background-color: #eee;
   padding: 10px;
   font-size: 1em;
   text-decoration: none; }
@@ -778,39 +780,75 @@ main#finalePage {
       margin-top: 0; }
 
 /* 
+ * Admin Login Page
+*/
+main#adminLogin {
+  height: 70vh;
+  width: 80%;
+  margin: 0 auto; }
+  main#adminLogin > form {
+    width: 50%;
+    height: 300px;
+    margin: 120px auto 30px; }
+    main#adminLogin > form .input-group {
+      text-align: center;
+      height: 2em;
+      margin: 2% auto;
+      clear: both; }
+    main#adminLogin > form label {
+      font-size: .9em;
+      float: left;
+      padding-top: .3em; }
+    main#adminLogin > form input {
+      line-height: 1.5em;
+      float: right;
+      border: outset 1px #000;
+      border-radius: 5px;
+      padding: 3px; }
+    main#adminLogin > form button {
+      margin-top: 5%;
+      background-color: #0094cc; }
+  main#adminLogin > p {
+    text-align: center;
+    clear: both; }
+
+/* 
  * Admin Page
 */
-main#adminPage {
-  height: 70vh; }
-  main#adminPage div.question_box {
-    width: 70%;
-    border: 1px dotted #000;
-    border-radius: 5px;
-    margin: 4% auto;
-    padding: 7px 3%;
-    position: relative; }
-    main#adminPage div.question_box > p.question_number {
-      width: 75%;
-      display: inline-block; }
-    main#adminPage div.question_box > p.edit-question {
-      width: 20%;
-      display: inline-block;
-      text-align: right;
-      margin: 0 10px;
-      position: absolute;
-      top: 0;
-      right: 0; }
-  main#adminPage form {
-    width: 80%;
-    text-align: center;
-    margin: 0 auto 50px; }
-  main#adminPage button[name=previous] {
-    margin-right: 30px; }
-  main#adminPage button[name='next'] {
-    margin-left: 30px; }
-  main#adminPage .no-user-questions {
-    width: 70%;
-    margin: 120px auto 0; }
+main#adminPage > p:first-of-type {
+  width: 75%;
+  text-align: right;
+  margin: 50px auto 10px; }
+main#adminPage div.question_box {
+  width: 70%;
+  border: 1px dotted #000;
+  border-radius: 5px;
+  margin: 4% auto;
+  padding: 7px 3%;
+  position: relative; }
+  main#adminPage div.question_box > p.question_number {
+    width: 75%;
+    display: inline-block; }
+  main#adminPage div.question_box > p.edit-question {
+    width: 20%;
+    display: inline-block;
+    text-align: right;
+    margin: 0 10px;
+    position: absolute;
+    top: 0;
+    right: 0; }
+main#adminPage form {
+  width: 80%;
+  text-align: center;
+  margin: 0 auto 50px; }
+main#adminPage button[name=previous] {
+  margin-right: 30px; }
+main#adminPage button[name='next'] {
+  margin-left: 30px; }
+main#adminPage .no-user-questions {
+  width: 70%;
+  height: 70vh;
+  margin: 120px auto 0; }
 
 /* 
  * Add Question Page
