@@ -144,19 +144,43 @@ document.addEventListener('DOMContentLoaded',function() {
 			});
 		});
 		
-		answerSubmit.addEventListener('click', function submitAnswer(e) {
-			e.preventDefault();
-			for(let i = 0; i < choices.length; i++) {
-				choices[i].onclick = function() {
-					
-					answerSubmit.removeEventListener('click', submitAnswer);
-				};
-				if(choices[i].getAttribute('checked') == true) {
+//		for(let i = 0; i < choices.length; i++) {
+//			choices[i].onclick = function() {
+//				console.log('Clicked on choice!');
+//				answerSubmit.removeEventListener('click', submitAnswer);
+//			};
+//			if(choices[i].getAttribute('checked') == true) {
+////					answerSubmit.removeEventListener('click', submitAnswer);
+//				return true;
+//			}
+////				return false;
+//		};
+
+		
+//		for(let i = 0; i < choices.length; i++) {
+//			choices[i].addEventListener('click', function() {
+//				console.log('Clicked on choice!');
+//				answerSubmit.removeEventListener('click', submitAnswer);
+//				return true;
+//			});
+//		}
+		
+//		answerSubmit.addEventListener('click', function submitAnswer(e) {
+//			e.preventDefault();
+//			for(let i = 0; i < choices.length; i++) {
+//				
+//				if(choices[i].getAttribute('checked') == true) {
 //					answerSubmit.removeEventListener('click', submitAnswer);
-					return true;
-				}
+//					answerSubmit.unbind('click', submitAnswer);
+//					return true;
+//				}
+//				choices[i].onclick = function() {
+//					console.log('Clicked on choice!');
+//					answerSubmit.removeEventListener('click', submitAnswer);
+//					return true;
+//				};
 //				return false;
-			};
-		});
+//			};
+//		});
 	}
 },false);

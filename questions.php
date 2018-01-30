@@ -47,7 +47,9 @@ if(isset($_POST["start"])) { //or isset($_POST["submit"])
 	// Get Results
 	$choices = mysqli_query($conn, $query) or die();
 	array_push($_SESSION["used_questions"], $question_number);
-} elseif(isset($_GET['qn'])) {
+} elseif(isset($_GET['qn']) && isset($_GET['n'])) {
+//	echo $_GET['qn'];
+//	exit();
 	// Get the question id from the DB
 	$question_number = $_GET['qn'];
 	// Set question number
@@ -62,7 +64,7 @@ if(isset($_POST["start"])) { //or isset($_POST["submit"])
 	*/
 	$query = "SELECT * FROM `questions`
 			  WHERE `question_category` = '$category'
-			  ORDER BY RAND()
+			  AND `question_number` = '$question_number'
 			  LIMIT 1";
 	// Get Result
 	$result = mysqli_query($conn, $query) or die();
@@ -76,7 +78,7 @@ if(isset($_POST["start"])) { //or isset($_POST["submit"])
 			  ORDER BY RAND()";
 	// Get Results
 	$choices = mysqli_query($conn, $query);
-} elseif(isset($_GET['n'])) {
+} elseif(isset($_GET['n']) && !isset($_GET['qn'])) {
 	//// Set question number
 	$number = (int) $_GET["n"];
 	// Set category
@@ -121,18 +123,18 @@ if(isset($_POST["start"])) { //or isset($_POST["submit"])
 				<div class="question">
 					<p class="current">Question <?= $number; ?> of <?= $_SESSION["total_questions"]; ?></p>
 					
-					<p><span id="question_number"><?= $number . ". "; ?></span><?=  html_entity_decode($question['question']); ?></p>
+					<p><span id="question_number"><?= $number . ". "; ?></span><?=  html_entity_decode(htmlspecialchars_decode($question['question'])); ?></p>
 				</div>
 
 				<div class="answers">
 					<ul class="choices">
 						<?php while($row = mysqli_fetch_assoc($choices)) : ?>
-							<li class="answer"><input type="radio" name="choice" value="<?= $row['id']; ?>" id="<?= $row['id']; ?>">&nbsp;&nbsp;<label for="<?= $row['id']; ?>"><?= html_entity_decode($row['answers']); ?></label></li>
+							<li class="answer"><input type="radio" name="choice" value="<?= $row['id']; ?>" id="<?= $row['id']; ?>">&nbsp;&nbsp;<label for="<?= $row['id']; ?>"><?= html_entity_decode(htmlspecialchars_decode($row['answers'])); ?></label></li>
 							<?php array_push($_SESSION['answer_order'], $row['id']); ?>
 						<?php endwhile; ?>					
 					</ul>
 					<br>
-					<p class="choicesError"><?= $choicesError; ?></p>
+					<p class="choicesError text-error"><?= $choicesError; ?></p>
 				</div>
 
 				<div class="submission">
