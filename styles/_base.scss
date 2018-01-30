@@ -20,6 +20,10 @@ body {
 	overflow-y: hidden;
 }
 
+.btn {
+	@extend %baseButtons;
+}
+
 header {
 	width: 100vw;
 	max-width: 1000px;

@@ -7,8 +7,9 @@ if(!isset($_SESSION['active_admin'])) {
 	header("Location: admin_login.php");
 }
 
-var_dump($_SESSION);
+//var_dump($_SESSION);
 
+$admin_user = $_SESSION['active_admin'];
 $start = 0;
 $end = 10;
 $total_count = mysqli_num_rows($results);
@@ -40,8 +41,9 @@ if(isset($_SESSION['start']) && isset($_SESSION['end'])) {
 
 $query 		= "SELECT * 
 			   FROM `questions`
-			   WHERE question_number <= $end 
-			   AND question_number > $start
+			   WHERE question_number <= '$end' 
+			   AND question_number > '$start'
+			   AND added_by = '$admin_user'
 			   LIMIT 10";
 $questions 	= mysqli_query($conn, $query);
 
@@ -64,14 +66,15 @@ require_once("../includes/header.php");
 
 <main id="adminPage">
 
-
+<?php if(mysqli_num_rows($questions) >= 1) : ?>
 <?php while($row = mysqli_fetch_assoc($questions)) : ?>
+	<p><a href="add.php" role="button" class="btn">Add Question</a></p>
 	<div class="question_box">
 		<p class="question_number">Question Number: <?php echo $row['question_number']; ?></p>
 		<p class="edit-question">
 			<a href="edit.php?question_number=<?= $row['question_number']; ?>">✎</a>
 		</p>
-		<!--<button></button>-->
+		<!--<button></button>
 		<!--  . "&category=" . $row['question_category'] -->
 		
 		<p><?php echo $row['question']; ?></p>
@@ -88,6 +91,12 @@ require_once("../includes/header.php");
 <?php endif; ?>
 </form>
 <!-- ➜ -->
+<?php else : ?>
+<div class="no-user-questions">
+	<h3>You currently have not added any questions.</h3>
+	<p><a href="add.php" role="button" class="btn">Add Question</a></p>
+</div>
+<?php endif; ?>
 
 </main>
 

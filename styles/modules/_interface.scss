@@ -443,6 +443,8 @@ main#finalePage {
  * Admin Page
 */
 main#adminPage {
+	height: 70vh;
+	
 	div.question_box {
 		width: 70%;
 		border: 1px dotted #000;
@@ -482,6 +484,33 @@ main#adminPage {
 		margin-left: 30px;
 		@extend %adminPageButtons;
 	}
+	
+	.no-user-questions {
+		width: 70%;
+		margin: 120px auto 0;
+	}
+	
+//	h3 {
+//		display: inline-block;
+//		width: 65%;
+//		margin: {
+//			top: 0;
+//			right: 0;
+//			bottom: 0;
+//			left: 0;
+//		}
+//	} 
+//	
+//	p {
+//		display: inline-block;
+//		width: 30%;
+//		margin: {
+//			top: 0;
+//			right: 0;
+//			bottom: 0;
+//			left: 0;
+//		}
+//	}
 }
 
 /* 

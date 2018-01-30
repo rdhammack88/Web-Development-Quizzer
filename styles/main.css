@@ -482,6 +482,14 @@ main#adminPage button[name=previous], main#adminPage button[name='next'] {
       -o-transform: scale(1.2);
       transform: scale(1.2); } }
 
+.btn {
+  display: inline-block;
+  border: 1px solid #000;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 1em;
+  text-decoration: none; }
+
 /*
  * Main Content Styles
 */
@@ -772,32 +780,37 @@ main#finalePage {
 /* 
  * Admin Page
 */
-main#adminPage div.question_box {
-  width: 70%;
-  border: 1px dotted #000;
-  border-radius: 5px;
-  margin: 4% auto;
-  padding: 7px 3%;
-  position: relative; }
-  main#adminPage div.question_box > p.question_number {
-    width: 75%;
-    display: inline-block; }
-  main#adminPage div.question_box > p.edit-question {
-    width: 20%;
-    display: inline-block;
-    text-align: right;
-    margin: 0 10px;
-    position: absolute;
-    top: 0;
-    right: 0; }
-main#adminPage form {
-  width: 80%;
-  text-align: center;
-  margin: 0 auto 50px; }
-main#adminPage button[name=previous] {
-  margin-right: 30px; }
-main#adminPage button[name='next'] {
-  margin-left: 30px; }
+main#adminPage {
+  height: 70vh; }
+  main#adminPage div.question_box {
+    width: 70%;
+    border: 1px dotted #000;
+    border-radius: 5px;
+    margin: 4% auto;
+    padding: 7px 3%;
+    position: relative; }
+    main#adminPage div.question_box > p.question_number {
+      width: 75%;
+      display: inline-block; }
+    main#adminPage div.question_box > p.edit-question {
+      width: 20%;
+      display: inline-block;
+      text-align: right;
+      margin: 0 10px;
+      position: absolute;
+      top: 0;
+      right: 0; }
+  main#adminPage form {
+    width: 80%;
+    text-align: center;
+    margin: 0 auto 50px; }
+  main#adminPage button[name=previous] {
+    margin-right: 30px; }
+  main#adminPage button[name='next'] {
+    margin-left: 30px; }
+  main#adminPage .no-user-questions {
+    width: 70%;
+    margin: 120px auto 0; }
 
 /* 
  * Add Question Page

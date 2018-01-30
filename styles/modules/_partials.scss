@@ -29,3 +29,21 @@
 		}
 	}
 }
+
+%baseButtons {
+	display: inline-block;
+	border: 1px solid #000;
+	border-radius: 5px;
+	padding: 10px;
+	font-size: 1em;
+	text-decoration: none;
+}
+
+%noMargin {
+	margin: {
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+	}
+}
