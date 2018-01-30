@@ -442,49 +442,142 @@ main#finalePage {
 /* 
  * Admin Login Page
 */
-main#adminLogin {
+main#adminLogin,
+main#adminSignup {
 	height: 70vh;
-	width: 80%;
+	width: 90%;
 	margin: 0 auto;
+	box-sizing: border-box;
 	
 	> form {
 		width: 50%;
-		height: 300px;
+		min-width: 300px;
+		max-width: 420px;
 		margin: 120px auto 30px;
+		box-sizing: border-box;
+		
+		> fieldset {
+			width: 95%;
+			margin: 0 auto;
+			box-sizing: content-box;
+			
+			> p:last-child {
+				text-align: right;
+				padding: 0;
+				margin: 0;
+
+				button {
+					margin-top: 7%;
+					background-color: #ddd;
+					color: $blue;
+				}
+			}
+		}
 		
 		.input-group {
-			text-align: center;
-//			width: 80%;
-			height: 2em;
-			margin: 2% auto;
-			clear: both;
+			width: 100%;
 		}
 		
 		label {
+			display: block;
 			font-size: .9em;
-			float: left;
-			padding-top: .3em;
-//			clear: both;
+			padding: .2em 0;
+			line-height: 1.8em;
+			margin-top: 3%;
 		}
 		
 		input {
+			display: block;
+			width: 100%;
 			line-height: 1.5em;
-			float: right;
 			border: outset 1px #000;
 			border-radius: 5px;
 			padding: 3px;
+			margin: 0;
+			box-sizing: border-box;
 		}
 		
-		button {
-			margin-top: 5%;
-			background-color: lighten($blue, 8%);
-//			clear: both;
+		p.text-error {
+			text-align: left;
+			margin: 0;
+			padding: 0;
 		}
+		
+//		@include break(1100px) {
+////			> fieldset {
+////				width: 100%;
+////
+////				p:last-child {
+////					text-align: right;
+////
+////					button {
+////						margin-top: 7%;
+////						background-color: #ddd;
+////						color: $blue;
+////					}
+////				}
+////			}
+//			
+//			.input-group {
+//				height: 2em;
+	//			text-align: center;
+	//			height: 2em;
+	//			margin: 2% auto;
+	//			clear: both;
+	//			@include clearfix;
+//			}
+//
+//			label {
+//				display: inline-block;
+//				font-size: .9em;
+//				float: left;
+//				line-height: 2.5em;
+//			}
+//
+//			input {
+//				display: inline-block;
+//				width: 60%;
+//				line-height: 1.5em;
+//				float: right;
+//				border: outset 1px #000;
+//				border-radius: 5px;
+//				padding: 3px;
+//			}
+//
+//			p {
+//				clear: both;
+//			}
+//
+//			p.text-error {
+//				float: right;
+//				margin: 0;
+//				padding: 0;
+//			}
+//		}
 	}
 	
 	> p {
 		text-align: center;
-		clear: both;
+		width: 85%;
+		margin: 0 auto;
+		font-size: .8em;
+		
+		@include break(768px) {
+			font-size: 1em;
+		}
+		
+		span {
+			padding: 15px;
+			
+			> a {
+				text-decoration: none;
+				color: $blue;
+			
+				&:hover {
+					text-decoration: underline;
+				}
+			}
+		}
 	}
 }
 

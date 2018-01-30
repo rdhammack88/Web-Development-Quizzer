@@ -412,6 +412,12 @@ body {
   overflow-x: hidden;
   overflow-y: hidden; }
 
+.text-error {
+  color: red;
+  text-transform: uppercase;
+  font-style: italic;
+  font-size: .7em; }
+
 header {
   width: 100vw;
   max-width: 1000px;
@@ -782,35 +788,79 @@ main#finalePage {
 /* 
  * Admin Login Page
 */
-main#adminLogin {
+main#adminLogin,
+main#adminSignup {
   height: 70vh;
-  width: 80%;
-  margin: 0 auto; }
-  main#adminLogin > form {
+  width: 90%;
+  margin: 0 auto;
+  box-sizing: border-box; }
+  main#adminLogin > form,
+  main#adminSignup > form {
     width: 50%;
-    height: 300px;
-    margin: 120px auto 30px; }
-    main#adminLogin > form .input-group {
-      text-align: center;
-      height: 2em;
-      margin: 2% auto;
-      clear: both; }
-    main#adminLogin > form label {
+    min-width: 300px;
+    max-width: 420px;
+    margin: 120px auto 30px;
+    box-sizing: border-box; }
+    main#adminLogin > form > fieldset,
+    main#adminSignup > form > fieldset {
+      width: 95%;
+      margin: 0 auto;
+      box-sizing: content-box; }
+      main#adminLogin > form > fieldset > p:last-child,
+      main#adminSignup > form > fieldset > p:last-child {
+        text-align: right;
+        padding: 0;
+        margin: 0; }
+        main#adminLogin > form > fieldset > p:last-child button,
+        main#adminSignup > form > fieldset > p:last-child button {
+          margin-top: 7%;
+          background-color: #ddd;
+          color: #0076a3; }
+    main#adminLogin > form .input-group,
+    main#adminSignup > form .input-group {
+      width: 100%; }
+    main#adminLogin > form label,
+    main#adminSignup > form label {
+      display: block;
       font-size: .9em;
-      float: left;
-      padding-top: .3em; }
-    main#adminLogin > form input {
+      padding: .2em 0;
+      line-height: 1.8em;
+      margin-top: 3%; }
+    main#adminLogin > form input,
+    main#adminSignup > form input {
+      display: block;
+      width: 100%;
       line-height: 1.5em;
-      float: right;
       border: outset 1px #000;
       border-radius: 5px;
-      padding: 3px; }
-    main#adminLogin > form button {
-      margin-top: 5%;
-      background-color: #0094cc; }
-  main#adminLogin > p {
+      padding: 3px;
+      margin: 0;
+      box-sizing: border-box; }
+    main#adminLogin > form p.text-error,
+    main#adminSignup > form p.text-error {
+      text-align: left;
+      margin: 0;
+      padding: 0; }
+  main#adminLogin > p,
+  main#adminSignup > p {
     text-align: center;
-    clear: both; }
+    width: 85%;
+    margin: 0 auto;
+    font-size: .8em; }
+    @media (min-width: 768px) {
+      main#adminLogin > p,
+      main#adminSignup > p {
+        font-size: 1em; } }
+    main#adminLogin > p span,
+    main#adminSignup > p span {
+      padding: 15px; }
+      main#adminLogin > p span > a,
+      main#adminSignup > p span > a {
+        text-decoration: none;
+        color: #0076a3; }
+        main#adminLogin > p span > a:hover,
+        main#adminSignup > p span > a:hover {
+          text-decoration: underline; }
 
 /* 
  * Admin Page

@@ -19,58 +19,68 @@ session_start();
 //			
 //		}
 //}
-
+$email_error = '';
+$passwordError = '';
 
 
 
 if(isset($_POST['login'])) {
-	$user_email = validateFormData($_POST['email']);
-	$user_password = validateFormData($_POST['password']);
-	$query = "SELECT *
-			  FROM admin_users
-			  WHERE email = '$user_email'";
-	$result = mysqli_query($conn, $query);
-	while($row = mysqli_fetch_assoc($result)){
-		$hashedPass = $row['password'];
-		
-		
-		if(password_verify($user_password, $hashedPass)) {
-//			echo $user_password;
-//			echo $row['id'];
-//			exit();
-			
-			$_SESSION['active_admin'] = $row['id'];
-//			var_dump($_SESSION);
-//			exit();
-			header("Location: index.php");
+	if( !$_POST["email"] ) {
+		$email_error = "Please enter your email";
+		if( !$_POST["password"] ) {
+			$passwordError = "Please enter a password";
 		}
-		
-		echo $hashedPass;
-		exit();
-	}	
+	} else {
+		$user_email = validateFormData($_POST['email']);
+		$user_password = validateFormData($_POST['password']);
+		$query = "SELECT *
+				  FROM admin_users
+				  WHERE email = '$user_email'";
+		$result = mysqli_query($conn, $query);
+		while($row = mysqli_fetch_assoc($result)){
+			$hashedPass = $row['password'];
+
+
+			if(password_verify($user_password, $hashedPass)) {
+	//			echo $user_password;
+	//			echo $row['id'];
+	//			exit();
+
+				$_SESSION['active_admin'] = $row['id'];
+	//			var_dump($_SESSION);
+	//			exit();
+				header("Location: index.php");
+			}
+
+			echo $hashedPass;
+			exit();
+		}
+	}
 }
 
 include('../includes/header.php');
 ?>
 <main id="adminLogin">
-
-<form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
-	<fieldset>
-		<legend>Log In</legend>
-		<div class="input-group">
-		<label for="email">Email:</label>
-		<input type="text" name="email" placeholder="email">
-		</div>
-		
-		<div class="input-group">
-		<label for="password">Password:</label>
-		<input type="password" name="password" placeholder="password">
-		</div>
-		<button type="submit" name="login" class="btn">Submit</button>
-	</fieldset>
-</form>
-
-<p>Don't have an account? <span><a href="../admin/admin_signup.php">Create one!</a></span></p>
-
+	<form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+		<fieldset>
+			<legend>Log In</legend>
+			<div class="input-group">
+				<label for="email">Email:</label>
+				<input type="text" name="email" placeholder="email">
+				<p class="hidden text-error"><small><?php echo $email_error; ?></small></p>
+			</div>
+			
+			<div class="input-group">
+				<label for="password">Password:</label>
+				<input type="password" name="password" placeholder="password">
+				<p class="hidden text-error"><small><?php echo $passwordError; ?></small></p>
+			</div>
+			<p>
+				<button type="submit" name="login" class="btn">Submit</button>				
+			</p>
+		</fieldset>
+	</form>
+	
+	<p>Don't have an account? <span><a href="../admin/admin_signup.php">Signup!</a></span></p>
 </main>
 <?php include('../includes/footer.php'); ?>

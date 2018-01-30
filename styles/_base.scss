@@ -24,6 +24,13 @@ body {
 	@extend %baseButtons;
 }
 
+.text-error {
+	color: red;
+	text-transform: uppercase;
+	font-style: italic;
+	font-size: .7em;
+}
+
 header {
 	width: 100vw;
 	max-width: 1000px;
