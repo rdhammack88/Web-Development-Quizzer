@@ -127,7 +127,7 @@ if(isset($_POST["start"])) { //or isset($_POST["submit"])
 				<div class="answers">
 					<ul class="choices">
 						<?php while($row = mysqli_fetch_assoc($choices)) : ?>
-							<li><input type="radio" name="choice" value="<?= $row['id']; ?>" id="<?= $row['id']; ?>">&nbsp;&nbsp;<label for="<?= $row['id']; ?>"><?= html_entity_decode($row['answers']); ?></label></li>
+							<li class="answer"><input type="radio" name="choice" value="<?= $row['id']; ?>" id="<?= $row['id']; ?>">&nbsp;&nbsp;<label for="<?= $row['id']; ?>"><?= html_entity_decode($row['answers']); ?></label></li>
 							<?php array_push($_SESSION['answer_order'], $row['id']); ?>
 						<?php endwhile; ?>					
 					</ul>

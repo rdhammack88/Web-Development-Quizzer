@@ -662,7 +662,8 @@ main.questionPage {
       font-size: .8em;
       font-weight: 300;
       line-height: 1.7em;
-      letter-spacing: 2px; }
+      letter-spacing: 2px;
+      padding: 3px; }
       @media (min-width: 768px) {
         main.questionPage .answers .choices li {
           font-size: 1em; } }

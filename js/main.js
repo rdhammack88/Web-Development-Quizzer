@@ -9,6 +9,11 @@ document.addEventListener('DOMContentLoaded',function() {
 	var choices = document.getElementsByName('choice');
 	var answerSubmit = document.getElementById('submitAnswer');
 	
+	
+	var answers = document.getElementsByClassName('answer');
+	console.log(choices);
+	console.log(answers);
+	
 	function getInfo(method, file, async, func) {
 		var xhr ;
 		
@@ -130,20 +135,26 @@ document.addEventListener('DOMContentLoaded',function() {
 //		} else {
 //			answerSubmit.removeEventListener('click', prevDef);			
 //		}
-		
-		
+		answers = Array.from(answers);
+		answers.forEach(function(answer) {
+			answer.addEventListener('click', function(e) {
+				answer.children[0].setAttribute('checked', true);
+				answerSubmit.removeEventListener('click', submitAnswer);
+//				console.log(answer.children[0]);
+			});
+		});
 		
 		answerSubmit.addEventListener('click', function submitAnswer(e) {
-			
+			e.preventDefault();
 			for(let i = 0; i < choices.length; i++) {
 				choices[i].onclick = function() {
+					
 					answerSubmit.removeEventListener('click', submitAnswer);
 				};
-				if(choices[i].checked) {
+				if(choices[i].getAttribute('checked') == true) {
 //					answerSubmit.removeEventListener('click', submitAnswer);
 					return true;
 				}
-				e.preventDefault();
 //				return false;
 			};
 		});

@@ -243,6 +243,7 @@ main.questionPage {
 			}
 			line-height: 1.7em;
 			letter-spacing: 2px;
+			padding: 3px;
 			
 			@include break(768px) {
 				font-size: 1em;
