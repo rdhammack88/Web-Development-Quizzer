@@ -1,33 +1,14 @@
+<<<<<<< HEAD
 Quizzer todos
 
-
 /** Needs Fixed
-	- Question Page
-		* display the correct answer for each question
-		* display each question with a pause to distinguish between questions
-		* add a timer to each question
-		* along with resources
-	- admin login page
-		* admin directive to either edit or add
-		* add button
-		* only show questions added by logged in admin
-		* limit login attempts
-		* Display proper question edit content
-	- 
-		*
-		* 
-		* 
-		* 
-	-
-		*
-		* 
-		* 
-		* 
-	-
-		*
-		* 
-		* 
-		* 
+ *	display the correct answer for each question
+		- along with resources
+ *	create admin login page
+		- admin directive to either edit or add
+ *	display each question with a pause to distinguish between questions
+ *	add a timer to each question
+ *
  
  
  
@@ -36,14 +17,3 @@ Quizzer todos
  *  make sure the question is not repeated
  *	make sure when no answer has been selected, to not go to the next page
 	
-	
-	
-	
-	
-	$user_email = validateFormData($user_email);
-$user_password = password_hash( $_POST['password'], PASSWORD_DEFAULT );
-			$query = "UPDATE admin_users SET password = '$user_password' WHERE email = '$user_email'";
-	$result = mysqli_query( $conn, $query );
-	echo $query;
-
-				$passed = "Password Updated!";
