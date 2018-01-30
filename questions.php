@@ -121,13 +121,13 @@ if(isset($_POST["start"])) { //or isset($_POST["submit"])
 				<div class="question">
 					<p class="current">Question <?= $number; ?> of <?= $_SESSION["total_questions"]; ?></p>
 					
-					<p><span id="question_number"><?= $number . ". "; ?></span><?=  $question['question']; ?></p>
+					<p><span id="question_number"><?= $number . ". "; ?></span><?=  html_entity_decode($question['question']); ?></p>
 				</div>
 
 				<div class="answers">
 					<ul class="choices">
 						<?php while($row = mysqli_fetch_assoc($choices)) : ?>
-							<li><input type="radio" name="choice" value="<?= $row['id']; ?>" id="<?= $row['id']; ?>">&nbsp;&nbsp;<label for="<?= $row['id']; ?>"><?= $row['answers']; ?></label></li>
+							<li><input type="radio" name="choice" value="<?= $row['id']; ?>" id="<?= $row['id']; ?>">&nbsp;&nbsp;<label for="<?= $row['id']; ?>"><?= html_entity_decode($row['answers']); ?></label></li>
 							<?php array_push($_SESSION['answer_order'], $row['id']); ?>
 						<?php endwhile; ?>					
 					</ul>
