@@ -1,13 +1,5 @@
 Quizzer todos
 
-durtyBomber416
-$2y$10$Ppl.hYoiT91wpU2dxxIq1.MFcgPsApO4rFV4zqO5ypadWzd.RiP6S
-	- $2y$10$Ppl.hYoiT91wpU2dxxIq1.MFcgPsApO4rFV4zqO5ypadWzd.RiP6S
-
-brutus
-$2y$10$qFO0nFSABYeKukkvczH8YuFej50f8aZ0GC27h3rvmX8N55Jq1dV.2
-	- $2y$10$qFO0nFSABYeKukkvczH8YuFej50f8aZ0GC27h3rvmX8N55Jq1dV.2
-
 /** Needs Fixed
 	- Question Page
 		* display the correct answer for each question
