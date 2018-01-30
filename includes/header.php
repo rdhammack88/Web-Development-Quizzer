@@ -1,5 +1,11 @@
 <?php
 $doc_root = substr($_SERVER['SCRIPT_NAME'], 0, (strpos($_SERVER['SCRIPT_NAME'], 'Quizzer'))+8);
+
+if(isset($_SESSION["category"]) && $_SESSION["category"] != '') {
+	$category = strtoupper($_SESSION["category"]);
+} else {
+	$category = "Quiz";
+}
 ?>
 
 <!DOCTYPE html>
@@ -20,7 +26,7 @@ $doc_root = substr($_SERVER['SCRIPT_NAME'], 0, (strpos($_SERVER['SCRIPT_NAME'], 
 
 <body>
 	<header>
-		<a href="<?php echo $doc_root; ?>index.php"><h1><?php echo isset($_SESSION["category"]) ? strtoupper($_SESSION["category"]) : "Quiz" ?> Tester</h1></a>
+		<a href="<?php echo $doc_root; ?>index.php"><h1><?php echo $category; ?> Tester</h1></a>
 		<!--<nav>
 			<ul>
 				<li><a href="index.php">Home</a></li>
