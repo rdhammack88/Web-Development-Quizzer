@@ -1,16 +1,22 @@
-<?php include 'includes/connection.php'; ?>
-<?php include 'includes/functions.php'; ?>
+<?php //include 'includes/connection.php'; ?>
+<?php //include 'includes/functions.php'; ?>
+<?php 
+include '../includes/connection.php';
+include '../includes/functions.php';
+include '../includes/queries.php';
+?>
 
 <?php
 
 /*
  * Get total questions
 */
-$query = "SELECT * FROM `questions`";
-
-// Get total results
-$questions = mysqli_query($conn, $query) or die();
-$total = $questions->num_rows;
+//$query = "SELECT * FROM `questions`";
+//
+//// Get total results
+//$questions = mysqli_query($conn, $query) or die();
+//$total = $questions->num_rows;
+$total = $results->num_rows;
 $next = $total+1;
 
 
@@ -95,17 +101,13 @@ if(isset($_POST['submit'])) {
 }
 
 if(isset($_POST["cancel"])) {
-	header("Location: index.php");
+	header("Location: ../admin/index.php");
 }
 
 
-
+include("../includes/header.php");
 ?>
 
-<?php include("includes/header.php"); ?>
-
-
-	
 	<main class="addPage">
 		<div class="container">
 			<h2>Add a Question</h2>
@@ -168,4 +170,4 @@ if(isset($_POST["cancel"])) {
 	</main>
 
 
-<?php include("includes/footer.php"); ?>
+<?php include("../includes/footer.php"); ?>
