@@ -27,7 +27,8 @@ if(!isset($_SESSION['active_admin'])) {
 //		echo __LINE__;
 		$question = $row['question'];
 		$question_number = $row['question_number'];
-		$category = $row['question_category'];
+		$question_category = $row['question_category'];
+		
 	//	array_push($answers, $row['answers']);
 		$answers[$row['id']] = $row['answers'];
 
@@ -153,9 +154,10 @@ if(isset($_POST["cancel"])) {
 }
 
 
-include("../includes/header.php"); 
+include("../includes/header.php");
 ?>
 
+<br>
 <main class="addPage">
 	<div class="container">
 		<h2>Add a Question</h2>
@@ -171,18 +173,18 @@ include("../includes/header.php");
 			</p>
 			<p>
 				<label for="question_text">Question Text: </label>
-				<input type="text" name="question_text" id="question_text" value="<?php echo $question; ?>">
+				<input type="text" name="question_text" id="question_text" value="<?php echo html_entity_decode($question); ?>">
 			</p>
 			<p>
 				<label for="question_category">Question Category: </label>
-				<input type="text" name="question_category" id="question_category" value="<?php echo $category; ?>">
+				<input type="text" name="question_category" id="question_category" value="<?php echo html_entity_decode($question_category); ?>">
 			</p>
 
 			<?php $i = 1; foreach($answers as $key => $answer) : ?>
 			<p><?php //echo $key ?></p>
 			<p>
 				<label for="choice<?= $i ?>">Choice #<?= $i; ?>: </label>
-				<input type="text" name="choice<?= $i; ?>" id="choice<?php $i; ?>" value="<?= $answer; ?>">
+				<input type="text" name="choice<?= $i; ?>" id="choice<?php $i; ?>" value="<?= html_entity_decode($answer); ?>">
 				<input type="hidden" name="" value="<?= $key ?>">
 			</p>
 			<?php if($answer == $correct) : ?>
@@ -199,11 +201,11 @@ include("../includes/header.php");
 			</p>
 			<p>
 				<label for="correct_reason">Correct Reason: </label>
-				<input type="text" name="correct_reason" id="correct_reason" value="<?php echo $correct_reason; ?>">
+				<input type="text" name="correct_reason" id="correct_reason" value="<?php echo html_entity_decode($correct_reason); ?>">
 			</p>
 			<p>
 				<label for="resources">Resources: </label>
-				<input type="text" name="resources" id="resources" value="<?php echo $resources; ?>">
+				<input type="text" name="resources" id="resources" value="<?php echo html_entity_decode($resources); ?>">
 			</p>
 			<input type="submit" name="cancel" value="Cancel">
 			<input type="submit" name="submit" value="submit">

@@ -77,7 +77,7 @@ require_once("../includes/header.php");
 		<!--<button></button>
 		<!--  . "&category=" . $row['question_category'] -->
 		
-		<p><?php echo $row['question']; ?></p>
+		<p><?php echo html_entity_decode($row['question']); ?></p>
 		
 	</div>
 <?php endwhile; ?>
