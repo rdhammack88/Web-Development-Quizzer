@@ -32,16 +32,35 @@ $query		= "SELECT `question_category`
 			   HAVING COUNT(*) >= 2";
 $categories = mysqli_query($conn, $query);
 
-if(isset($_SESSION['category'])){
 /*
  * Final Page query results
 */
-$query = "SELECT questions.question_number, questions.question, questions.question_category, choices.id, choices.is_correct, choices.answers, choices.correct_explanation, choices.resources 
-FROM questions 
-LEFT JOIN choices ON questions.question_number = choices.question_number 
-WHERE questions.question_category = '" . $_SESSION['category'] . "' AND questions.question_number IN (" . implode(", ", $_SESSION["used_questions"]) .")
-ORDER BY field(questions.question_number, " . implode(", ", $_SESSION["used_questions"]) ."), field(id, " . implode(", ", $_SESSION["answer_order"]) .")";
-$finale_queries = mysqli_query($conn, $query);
+//if(isset($_SESSION['category'])){
+if(isset($_SESSION['finished'])){
+
+	$category = $_SESSION['category'];
+	$used_questions = implode(', ', $_SESSION['used_questions']);
+	$answer_order = implode(', ', $_SESSION['answer_order']);
+//	echo $category;
+//	echo '<br>';
+//	echo $used_questions;
+//	echo '<br>';
+//	echo $answer_order;
+//	echo '<br>';
+//	exit();
+	
+	$query = "SELECT questions.question_number, questions.question, questions.question_category, choices.id, choices.is_correct, choices.answers, choices.correct_explanation, choices.resources 
+	FROM questions 
+	LEFT JOIN choices ON questions.question_number = choices.question_number 
+	WHERE questions.question_category = '$category' AND questions.question_number IN ($used_questions)
+	ORDER BY field(questions.question_number, $used_questions), field(id, $answer_order)";	
+
+//	$query = "SELECT questions.question_number, questions.question, questions.question_category, choices.id, choices.is_correct, choices.answers, choices.correct_explanation, choices.resources 
+//	FROM questions 
+//	LEFT JOIN choices ON questions.question_number = choices.question_number 
+//	WHERE questions.question_category = '" . $_SESSION['category'] . "' AND questions.question_number IN (" . implode(", ", $_SESSION["used_questions"]) .")
+//	ORDER BY field(questions.question_number, " . implode(", ", $_SESSION["used_questions"]) ."), field(id, " . implode(", ", $_SESSION["answer_order"]) .")";
+	$finale_queries = mysqli_query($conn, $query);
 }
 
 

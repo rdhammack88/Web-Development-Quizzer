@@ -43,6 +43,8 @@ if(isset($_POST['submit'])) {
 				array_push($_SESSION["right_wrong"], "wrong");
 			}
 			++$_SESSION['score'];
+			$_SESSION['score'] = $_SESSION['score'] >= $total ? $total : $_SESSION['score'];
+//			$_SESSION['finished'] = "complete";
 			header("Location: final.php");
 			exit();
 		}
